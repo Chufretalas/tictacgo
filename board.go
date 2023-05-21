@@ -42,16 +42,16 @@ func (v *Board) Put(char string, line int, column int) error {
 		v.board[line][column] = char
 		return nil
 	}
-	return fmt.Errorf("space already used by: %v", v.board[line][column])
+	return fmt.Errorf("space already used by: %v\n", v.board[line][column])
 }
 
 func (v *Board) Check() string {
 	for i := 0; i < 3; i++ {
 		if v.board[i][0] == v.board[i][1] && v.board[i][1] == v.board[i][2] && v.board[i][0] != "-" {
-			fmt.Printf("%v Line: %o", v.board[i][0], i)
+			fmt.Printf("%v Line: %o\n", v.board[i][0], i)
 			return v.board[1][0]
 		}
-		if v.board[0][i] == v.board[1][i] && v.board[1][i] == v.board[2][i] && v.board[0][1] != "-" {
+		if v.board[0][i] == v.board[1][i] && v.board[1][i] == v.board[2][i] && v.board[0][i] != "-" {
 			fmt.Printf("%v Column: %o\n", v.board[0][i], i)
 			return v.board[1][0]
 		}
@@ -64,8 +64,8 @@ func (v *Board) Check() string {
 		fmt.Printf("%v Inv. Diagonal\n", v.board[1][1])
 		return v.board[1][0]
 	}
-	fmt.Println("none")
-	return ""
+	// fmt.Println("none")
+	return "none"
 }
 
 func (v *Board) GetFlattened() []string {
