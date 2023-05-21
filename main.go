@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 func main() {
 	b := NewBoard()
 	b.Show()
@@ -8,4 +10,5 @@ func main() {
 	b.X(2, 0)
 	b.Show()
 	b.Check()
+	fmt.Println(b.GetFlattened())
 }

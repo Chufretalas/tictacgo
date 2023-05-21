@@ -7,7 +7,7 @@ import (
 )
 
 func NewBoard() Board {
-	return Board{[3][3]string{
+	return Board{[][]string{
 		{"-", "-", "-"},
 		{"-", "-", "-"},
 		{"-", "-", "-"},
@@ -15,7 +15,7 @@ func NewBoard() Board {
 }
 
 type Board struct {
-	board [3][3]string
+	board [][]string
 }
 
 func (v *Board) Show() {
@@ -66,4 +66,12 @@ func (v *Board) Check() string {
 	}
 	fmt.Println("none")
 	return ""
+}
+
+func (v *Board) GetFlattened() []string {
+	flattened := make([]string, 0)
+	for _, line := range v.board {
+		flattened = append(flattened, line...)
+	}
+	return flattened
 }
