@@ -7,8 +7,9 @@ func main() {
 	b.Show()
 	b.X(0, 2)
 	b.X(1, 1)
+	fmt.Println(b.GetAvailable())
 	b.X(2, 0)
 	b.Show()
 	b.Check()
-	fmt.Println(b.GetFlattened())
+	fmt.Println(b.GetAvailable())
 }

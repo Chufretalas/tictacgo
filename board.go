@@ -75,3 +75,16 @@ func (v *Board) GetFlattened() []string {
 	}
 	return flattened
 }
+
+// Returns the [lineIndex, ColumnIndex] of available spaces
+func (v *Board) GetAvailable() [][2]int {
+	avaTuples := make([][2]int, 0)
+	for lId, line := range v.board {
+		for cId, v := range line {
+			if v == "-" {
+				avaTuples = append(avaTuples, [2]int{lId, cId})
+			}
+		}
+	}
+	return avaTuples
+}
