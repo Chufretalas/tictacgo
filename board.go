@@ -45,26 +45,36 @@ func (v *Board) Put(char string, line int, column int) error {
 	return fmt.Errorf("space already used by: %v", v.board[line][column])
 }
 
-func (v *Board) Check() string {
+func (v *Board) Check(printResult bool) string { //TODO: turn all those 'if printResult' to just one
 	for i := 0; i < 3; i++ {
 		if v.board[i][0] == v.board[i][1] && v.board[i][1] == v.board[i][2] && v.board[i][0] != "-" {
-			fmt.Printf("%v Line: %o\n", v.board[i][0], i)
+			if printResult {
+				fmt.Printf("%v Line: %o\n", v.board[i][0], i)
+			}
 			return v.board[i][0]
 		}
 		if v.board[0][i] == v.board[1][i] && v.board[1][i] == v.board[2][i] && v.board[0][i] != "-" {
-			fmt.Printf("%v Column: %o\n", v.board[0][i], i)
+			if printResult {
+				fmt.Printf("%v Column: %o\n", v.board[0][i], i)
+			}
 			return v.board[0][i]
 		}
 	}
 	if v.board[0][0] == v.board[1][1] && v.board[1][1] == v.board[2][2] && v.board[1][1] != "-" {
-		fmt.Printf("%v Diagonal\n", v.board[1][1])
+		if printResult {
+			fmt.Printf("%v Diagonal\n", v.board[1][1])
+		}
 		return v.board[1][1]
 	}
 	if v.board[0][2] == v.board[1][1] && v.board[1][1] == v.board[2][0] && v.board[1][1] != "-" {
-		fmt.Printf("%v Inv. Diagonal\n", v.board[1][1])
+		if printResult {
+			fmt.Printf("%v Inv. Diagonal\n", v.board[1][1])
+		}
 		return v.board[1][1]
 	}
-	// fmt.Println("none")
+	if printResult {
+		fmt.Println("none")
+	}
 	return "none"
 }
 
