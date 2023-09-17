@@ -6,7 +6,7 @@ func main() {
 	TestRandomOdds(1000)
 }
 
-// Teste the odds of one random bot winning againsty another
+// Teste the odds of one random bot winning against another
 func TestRandomOdds(turns int) {
 	results := make(map[string]int)
 	results["X"] = 0
